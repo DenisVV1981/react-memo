@@ -196,6 +196,16 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
     };
   }, [gameStartDate, gameEndDate]);
 
+  const getClassByAttempt = () => {
+    if (attempt === 3 || attempt === 2) {
+      return styles.attemptNormal;
+    } else if (attempt === 1) {
+      return styles.attemptLast;
+    } else {
+      return styles.attemptEmpty;
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -222,7 +232,7 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
         {status === STATUS_IN_PROGRESS ? <Button onClick={resetGame}>Начать заново</Button> : null}
       </div>
 
-      <div className={styles.previewText}>{`Осталось ${attempt} попыток`}</div>
+      {status === STATUS_IN_PROGRESS && <div className={getClassByAttempt()}>{`Осталось ${attempt} попыток`}</div>}
 
       <div className={styles.cards}>
         {cards.map(card => (
