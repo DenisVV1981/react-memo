@@ -9,17 +9,17 @@ export function SelectLevelPage() {
         <ul className={styles.levels}>
           <li className={styles.level}>
             <Link className={styles.levelLink} to="/game/3">
-              1
+              Легкий
             </Link>
           </li>
           <li className={styles.level}>
             <Link className={styles.levelLink} to="/game/6">
-              2
+              Cредний
             </Link>
           </li>
           <li className={styles.level}>
             <Link className={styles.levelLink} to="/game/9">
-              3
+              Сложный
             </Link>
           </li>
         </ul>
