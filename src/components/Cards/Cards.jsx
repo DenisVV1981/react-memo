@@ -40,7 +40,7 @@ function getTimerValue(startDate, endDate) {
  * pairsCount - сколько пар будет в игре
  * previewSeconds - сколько секунд пользователь будет видеть все карты открытыми до начала игры
  */
-export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
+export function Cards({ pairsCount = 3, hasCounter = false, previewSeconds = 5 }) {
   // В cards лежит игровое поле - массив карт и их состояние открыта\закрыта
   const [cards, setCards] = useState([]);
   // Текущий статус игры
@@ -129,7 +129,7 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
 
     // "Игрок проиграл", т.к на поле есть две открытые карты без пары
     if (playerLost) {
-      if (attempt > 0) {
+      if (hasCounter && attempt > 0) {
         setAttempt(attempt - 1);
         setTimeout(() => {
           // Игровое поле: закрываем неверную карту обратно.
@@ -232,7 +232,9 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
         {status === STATUS_IN_PROGRESS ? <Button onClick={resetGame}>Начать заново</Button> : null}
       </div>
 
-      {status === STATUS_IN_PROGRESS && <div className={getClassByAttempt()}>{`Осталось ${attempt} попыток`}</div>}
+      {hasCounter === true && status === STATUS_IN_PROGRESS && (
+        <div className={getClassByAttempt()}>{`Осталось ${attempt} попыток`}</div>
+      )}
 
       <div className={styles.cards}>
         {cards.map(card => (
