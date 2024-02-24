@@ -129,15 +129,11 @@ export function Cards({ pairsCount = 3, hasCounter = false, previewSeconds = 5 }
 
     // "Игрок проиграл", т.к на поле есть две открытые карты без пары
     if (playerLost) {
-      if (hasCounter && attempt > 0) {
+      if (hasCounter && attempt > 1) {
         setAttempt(attempt - 1);
         setTimeout(() => {
           // Игровое поле: закрываем неверную карту обратно.
           const nextCards = cards.map(card => {
-            if (card.id !== clickedCard.id) {
-              return card;
-            }
-
             return {
               ...card,
               open: false,
@@ -199,10 +195,8 @@ export function Cards({ pairsCount = 3, hasCounter = false, previewSeconds = 5 }
   const getClassByAttempt = () => {
     if (attempt === 3 || attempt === 2) {
       return styles.attemptNormal;
-    } else if (attempt === 1) {
-      return styles.attemptLast;
     } else {
-      return styles.attemptEmpty;
+      return styles.attemptLast;
     }
   };
 
