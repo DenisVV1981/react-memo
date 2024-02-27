@@ -134,9 +134,10 @@ export function Cards({ pairsCount = 3, hasCounter = false, previewSeconds = 5 }
         setTimeout(() => {
           // Игровое поле: закрываем неверную карту обратно.
           const nextCards = cards.map(card => {
+            const isOpen = openCardsWithoutPair.indexOf(card) > -1 ? false : card.open;
             return {
               ...card,
-              open: false,
+              open: isOpen,
             };
           });
 
