@@ -42,6 +42,7 @@ export function SelectLevelPage() {
         <Link to={`/game/${difficulty}/${isChecked}`} className={styles.buttonStart}>
           Старт
         </Link>
+        <Link to={`/leaderboard`}> Перейти к лидерборду </Link>
       </div>
     </div>
   );

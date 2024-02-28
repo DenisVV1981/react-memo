@@ -57,6 +57,7 @@
   font-weight: 400;
   text-decoration: none;
 }
+
 .levelLinkSelected {
   color: #00c12a;
   text-align: center;
@@ -86,6 +87,7 @@
   font-weight: 400;
   line-height: 32px;
   border: none;
+  text-decoration: none;
   cursor: pointer;
 }
 
