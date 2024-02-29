@@ -37,12 +37,14 @@ export function SelectLevelPage() {
         </ul>
         <div className={styles.checkBox}>
           <input type="checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
-          Легкий
+          Легкий режим (3 жизни)
         </div>
         <Link to={`/game/${difficulty}/${isChecked}`} className={styles.buttonStart}>
           Старт
         </Link>
-        <Link to={`/leaderboard`}> Перейти к лидерборду </Link>
+        <Link to={`/leaderboard`} className={styles.text_leaderbord}>
+          Перейти к лидерборду
+        </Link>
       </div>
     </div>
   );

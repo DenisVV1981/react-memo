@@ -96,3 +96,15 @@
   font-family: StratosSkyeng;
   padding-bottom: 25px;
 }
+
+.text_leaderbord {
+  padding-top: 18px;
+  color: rgb(0, 73, 128);
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0%;
+  text-align: left;
+  text-decoration-line: underline;
+}

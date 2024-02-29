@@ -8,3 +8,13 @@ export function getLeadersList() {
     return response.json();
   });
 }
+
+export function postLeaderAtList({ name, time }) {
+  return fetch("https://wedev-api.sky.pro/api/leaderboard", {
+    method: "POST",
+    body: JSON.stringify({
+      name: name.replaceAll("<", "&lt;").replaceAll(">", "&gt;"),
+      time: time,
+    }),
+  }).then(response => response.json());
+}

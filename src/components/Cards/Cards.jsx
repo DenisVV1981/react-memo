@@ -247,6 +247,7 @@ export function Cards({ pairsCount = 3, hasCounter = false, previewSeconds = 5 }
         <div className={styles.modalContainer}>
           <EndGameModal
             isWon={status === STATUS_WON}
+            isLeader={status === STATUS_WON && pairsCount === 3}
             gameDurationSeconds={timer.seconds}
             gameDurationMinutes={timer.minutes}
             onClick={resetGame}
