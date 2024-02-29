@@ -12,7 +12,7 @@ export function EndGameModal({ isWon, isLeader, gameDurationSeconds, gameDuratio
   const [value, setValue] = useState("");
 
   const handleKeyDown = event => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && value.trim() !== "") {
       postLeaderAtList({ name: value, time: gameDurationMinutes * 60 + gameDurationSeconds });
       setValue("");
     }
