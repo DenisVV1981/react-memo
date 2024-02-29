@@ -6,7 +6,8 @@ export function LeaderBoard() {
   const [rating, setRating] = useState([]);
   useEffect(() => {
     getLeadersList().then(data => {
-      setRating(data.leaders);
+      const sortedLeaders = data.leaders.sort((a, b) => a.time - b.time);
+      setRating(sortedLeaders.map((leader, index) => ({ ...leader, position: index + 1 })));
     });
   }, []);
   return (
@@ -20,7 +21,7 @@ export function LeaderBoard() {
         return (
           <div id={element.id}>
             <div className={style.board_item}>
-              <div className={style.position}>{element.id}</div>
+              <div className={style.position}>{element.position}</div>
               <div className={style.name}>{element.name}</div>
               <div className={style.time}>
                 {Math.floor(element.time / 60)
