@@ -107,4 +107,5 @@
   letter-spacing: 0%;
   text-align: left;
   text-decoration-line: underline;
+  text-decoration-skip-ink: none;
 }

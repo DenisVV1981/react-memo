@@ -12,9 +12,8 @@ export function EndGameModal({ isWon, isLeader, gameDurationSeconds, gameDuratio
   const [value, setValue] = useState("");
 
   const handleKeyDown = event => {
-    if (event.key === "Enter" && value.trim() !== "") {
-      postLeaderAtList({ name: value, time: gameDurationMinutes * 60 + gameDurationSeconds });
-      setValue("");
+    if (event.key === "Enter") {
+      sendResult();
     }
   };
 
@@ -23,19 +22,29 @@ export function EndGameModal({ isWon, isLeader, gameDurationSeconds, gameDuratio
 
   const imgAlt = isWon ? "celebration emodji" : "dead emodji";
 
+  const sendResult = () => {
+    if (value.trim() !== "") {
+      postLeaderAtList({ name: value, time: gameDurationMinutes * 60 + gameDurationSeconds });
+      setValue("");
+    }
+  };
+
   return (
     <div className={styles.modal}>
       <img className={styles.image} src={imgSrc} alt={imgAlt} />
       <h2 className={styles.title}>{title}</h2>
       {isWon && isLeader && (
-        <input
-          className={styles.name_input}
-          type="text"
-          placeholder="Пользователь"
-          value={value}
-          onInput={e => setValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
+        <div className={styles.new_leader}>
+          <input
+            className={styles.name_input}
+            type="text"
+            placeholder="Пользователь"
+            value={value}
+            onInput={e => setValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+          <Button onClick={sendResult}>Добавить</Button>
+        </div>
       )}
       <p className={styles.description}>Затраченное время:</p>
       <div className={styles.time}>
