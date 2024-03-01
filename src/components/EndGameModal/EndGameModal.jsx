@@ -19,7 +19,6 @@ export function EndGameModal({ isWon, isLeader, gameDurationSeconds, gameDuratio
   };
 
   const title = isWon && !isLeader ? "Вы победили!" : isWon && isLeader ? "Вы попали на Лидерборд!" : "Вы проиграли!";
-
   const imgSrc = isWon ? celebrationImageUrl : deadImageUrl;
 
   const imgAlt = isWon ? "celebration emodji" : "dead emodji";
@@ -28,23 +27,27 @@ export function EndGameModal({ isWon, isLeader, gameDurationSeconds, gameDuratio
     <div className={styles.modal}>
       <img className={styles.image} src={imgSrc} alt={imgAlt} />
       <h2 className={styles.title}>{title}</h2>
-      <input
-        className={styles.name_input}
-        type="text"
-        placeholder="Пользователь"
-        value={value}
-        onInput={e => setValue(e.target.value)}
-        onKeyDown={handleKeyDown}
-      />
+      {isWon && isLeader && (
+        <input
+          className={styles.name_input}
+          type="text"
+          placeholder="Пользователь"
+          value={value}
+          onInput={e => setValue(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+      )}
       <p className={styles.description}>Затраченное время:</p>
       <div className={styles.time}>
         {gameDurationMinutes.toString().padStart("2", "0")}.{gameDurationSeconds.toString().padStart("2", "0")}
       </div>
 
       <Button onClick={onClick}>Играть снова</Button>
-      <Link to={`/leaderboard`} className={styles.text_leaderbord}>
-        Перейти к лидерборду
-      </Link>
+      {isWon && isLeader && (
+        <Link to={`/leaderboard`} className={styles.text_leaderbord}>
+          Перейти к лидерборду
+        </Link>
+      )}
     </div>
   );
 }

@@ -17,10 +17,10 @@ export function LeaderBoard() {
         <div className={style.name}>Пользователь</div>
         <div className={style.time}>Время</div>
       </div>
-      {rating.map(element => {
-        return (
-          <div id={element.id}>
-            <div className={style.board_item}>
+      <ul className={style.list}>
+        {rating.map(element => {
+          return (
+            <li key={element.position} className={style.board_item}>
               <div className={style.position}>{element.position}</div>
               <div className={style.name}>{element.name}</div>
               <div className={style.time}>
@@ -30,10 +30,10 @@ export function LeaderBoard() {
                   ":" +
                   (element.time % 60).toString().padStart(2, "0")}
               </div>
-            </div>
-          </div>
-        );
-      })}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
