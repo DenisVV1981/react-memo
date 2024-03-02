@@ -54,9 +54,6 @@
   border-radius: 12px;
   background: #7ac100;
   color: #fff;
-  text-align: center;
-  font-feature-settings: lining-nums proportional-nums;
-  font-variant-numeric: lining-nums proportional-nums;
   font-family: StratosSkyeng;
   font-size: 24px;
   font-style: normal;
@@ -65,6 +62,10 @@
   border: none;
   cursor: pointer;
   text-decoration: none;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
   
  
