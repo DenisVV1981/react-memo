@@ -42,11 +42,15 @@
 }
 
 .name {
-    width: 324px;
+    width: 227px;
 }
 
 .time {
     width: 102px;
+}
+
+.super {
+    width: 194px;
 }
 
 .list {

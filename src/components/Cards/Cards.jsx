@@ -250,8 +250,9 @@ export function Cards({ pairsCount = 3, hasCounter = false, previewSeconds = 5 }
           )}
         </div>
         {status === STATUS_IN_PROGRESS ? (
-          <div>
+          <div className={styles.tooltip}>
             {!isEyeUsed ? <img onClick={handleEyeClick} src={afterlightImageUrl} alt="eye" /> : null}
+            {/* <span class="tooltiptext">Это цветной tooltip</span> */}
             <img onClick={handleCurcleClick} src={curcleImageUrl} alt="curcle" />
           </div>
         ) : null}
@@ -278,10 +279,12 @@ export function Cards({ pairsCount = 3, hasCounter = false, previewSeconds = 5 }
         <div className={styles.modalContainer}>
           <EndGameModal
             isWon={status === STATUS_WON}
-            isLeader={status === STATUS_WON && pairsCount === 9}
+            isLeader={status === STATUS_WON && pairsCount === 3}
             gameDurationSeconds={timer.seconds}
             gameDurationMinutes={timer.minutes}
             onClick={resetGame}
+            usedHardMode={!hasCounter}
+            usedMagic={isEyeUsed}
           />
         </div>
       ) : null}

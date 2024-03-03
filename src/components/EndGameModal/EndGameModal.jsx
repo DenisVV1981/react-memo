@@ -8,7 +8,15 @@ import { useState } from "react";
 import { postLeaderAtList } from "../../api";
 import { Link } from "react-router-dom";
 
-export function EndGameModal({ isWon, isLeader, gameDurationSeconds, gameDurationMinutes, onClick }) {
+export function EndGameModal({
+  isWon,
+  isLeader,
+  gameDurationSeconds,
+  gameDurationMinutes,
+  onClick,
+  usedHardMode = false,
+  usedMagic = false,
+}) {
   const [value, setValue] = useState("");
 
   const handleKeyDown = event => {
@@ -24,7 +32,12 @@ export function EndGameModal({ isWon, isLeader, gameDurationSeconds, gameDuratio
 
   const sendResult = () => {
     if (value.trim() !== "") {
-      postLeaderAtList({ name: value, time: gameDurationMinutes * 60 + gameDurationSeconds });
+      postLeaderAtList({
+        name: value,
+        time: gameDurationMinutes * 60 + gameDurationSeconds,
+        isHard: usedHardMode,
+        isMagic: usedMagic,
+      });
       setValue("");
     }
   };
