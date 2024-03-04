@@ -250,9 +250,16 @@ export function Cards({ pairsCount = 3, hasCounter = false, previewSeconds = 5 }
           )}
         </div>
         {status === STATUS_IN_PROGRESS ? (
-          <div className={styles.tooltip}>
-            {!isEyeUsed ? <img onClick={handleEyeClick} src={afterlightImageUrl} alt="eye" /> : null}
-            {/* <span class="tooltiptext">Это цветной tooltip</span> */}
+          <div className={styles.tooltipContainer}>
+            {!isEyeUsed ? (
+              <img onClick={handleEyeClick} src={afterlightImageUrl} alt="eye" className={styles.tooltipElement} />
+            ) : null}
+            <div className={styles.tooltip}>
+              <div className={styles.text_header}>Прозрение</div>
+              <div className={styles.text_describtion}>
+                На 5 секунд показываются все карты. Таймер длительности игры на это время останавливается.
+              </div>
+            </div>
             <img onClick={handleCurcleClick} src={curcleImageUrl} alt="curcle" />
           </div>
         ) : null}

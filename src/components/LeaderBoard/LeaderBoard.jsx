@@ -30,12 +30,18 @@ export function LeaderBoard() {
               <div className={style.name}>{game.name}</div>
               <div className={style.achiv}>
                 {game.achievements.indexOf(1) >= 0 ? (
-                  <img src={modeHardImageUrl} alt="" />
+                  <div className={style.tooltipContainer}>
+                    <img src={modeHardImageUrl} alt="" />
+                    <div className={style.tooltip}>Игра пройдена в сложном режиме</div>
+                  </div>
                 ) : (
-                  <img src={modeLightImageUrl} alt="" />
+                  <img src={modeLightImageUrl} alt="" className={style.modeLight} />
                 )}
                 {game.achievements.indexOf(2) >= 0 ? (
-                  <img src={magicOnImageUrl} alt="" />
+                  <div className={style.tooltipContainer}>
+                    <img src={magicOnImageUrl} alt="" />
+                    <div className={style.tooltip}>Игра пройдена без супер-сил</div>
+                  </div>
                 ) : (
                   <img src={magicOffImageUrl} alt="" />
                 )}
