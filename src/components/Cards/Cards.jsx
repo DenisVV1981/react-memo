@@ -7,7 +7,7 @@ import { Button } from "../../components/Button/Button";
 import { Card } from "../Card/Card";
 
 import afterlightImageUrl from "./images/afterlight.svg";
-import curcleImageUrl from "./images/curcle.svg";
+// import curcleImageUrl from "./images/curcle.svg";
 
 // Игра закончилась
 const STATUS_LOST = "STATUS_LOST";
@@ -222,9 +222,9 @@ export function Cards({ pairsCount = 3, hasCounter = false, previewSeconds = 5 }
     setGameStartDate(new Date(gameStartDate.getTime() + 5000));
   };
 
-  const handleCurcleClick = () => {
-    console.log("нажал подсказку");
-  };
+  // const handleCurcleClick = () => {
+  //   console.log("нажал подсказку");
+  // };
 
   return (
     <div className={styles.container}>
@@ -255,15 +255,17 @@ export function Cards({ pairsCount = 3, hasCounter = false, previewSeconds = 5 }
               <img onClick={handleEyeClick} src={afterlightImageUrl} alt="eye" className={styles.tooltipElement} />
             ) : null}
             <div className={styles.tooltip}>
-              <div className={styles.text_header}>Прозрение</div>
-              <div className={styles.text_describtion}>
+              <div className={styles.tooltip_text_header}>Прозрение</div>
+              <div className={styles.tooltip_text_describtion}>
                 На 5 секунд показываются все карты. Таймер длительности игры на это время останавливается.
               </div>
             </div>
-            <img onClick={handleCurcleClick} src={curcleImageUrl} alt="curcle" />
+            {/* <img onClick={handleCurcleClick} src={curcleImageUrl} alt="curcle" /> */}
           </div>
         ) : null}
-        {status === STATUS_IN_PROGRESS ? <Button onClick={resetGame}>Начать заново</Button> : null}
+        {status === STATUS_IN_PROGRESS || status === STATUS_EYE ? (
+          <Button onClick={resetGame}>Начать заново</Button>
+        ) : null}
       </div>
 
       {hasCounter === true && status === STATUS_IN_PROGRESS && (
@@ -286,7 +288,7 @@ export function Cards({ pairsCount = 3, hasCounter = false, previewSeconds = 5 }
         <div className={styles.modalContainer}>
           <EndGameModal
             isWon={status === STATUS_WON}
-            isLeader={status === STATUS_WON && pairsCount === 3}
+            isLeader={status === STATUS_WON && pairsCount === 9}
             gameDurationSeconds={timer.seconds}
             gameDurationMinutes={timer.minutes}
             onClick={resetGame}

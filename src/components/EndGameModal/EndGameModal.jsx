@@ -18,6 +18,7 @@ export function EndGameModal({
   usedMagic = false,
 }) {
   const [value, setValue] = useState("");
+  const [isLeaderAdded, setIsLeaderAdded] = useState(false);
 
   const handleKeyDown = event => {
     if (event.key === "Enter") {
@@ -36,17 +37,18 @@ export function EndGameModal({
         name: value,
         time: gameDurationMinutes * 60 + gameDurationSeconds,
         isHard: usedHardMode,
-        isMagic: usedMagic,
+        isMagic: !usedMagic,
       });
-      setValue("");
     }
+    setValue("");
+    setIsLeaderAdded(true);
   };
 
   return (
     <div className={styles.modal}>
       <img className={styles.image} src={imgSrc} alt={imgAlt} />
       <h2 className={styles.title}>{title}</h2>
-      {isWon && isLeader && (
+      {isWon && isLeader && !isLeaderAdded && (
         <div className={styles.new_leader}>
           <input
             className={styles.name_input}
