@@ -39,9 +39,11 @@ export function EndGameModal({
         isHard: usedHardMode,
         isMagic: !usedMagic,
       });
+      setValue("");
+      setIsLeaderAdded(true);
+    } else {
+      alert("Введите имя и нажмите Enter");
     }
-    setValue("");
-    setIsLeaderAdded(true);
   };
 
   return (
